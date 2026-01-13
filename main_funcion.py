@@ -421,8 +421,8 @@ class BTCBacktesterUTC8:
 
 if __name__ == "__main__":
     # --- 在此填入你的 Demo Key 即可執行下單 ---
-    DEMO_API = "xng5xOOaHn9KROZDnWP57PYFxY1LMvWjR0Z7DLt8R4u2jwP6mOCj6HDRUyCVNLpM"
-    DEMO_SECRET = "g3GCHjxKaowQJ0qGxgF5QUC2AW0wbWcobthLk8rdvPaLgj8b3l7cxBC1hdmLBiTU"
+    DEMO_API = ""
+    DEMO_SECRET = ""
     backtester = BTCBacktesterUTC8(DEMO_API, DEMO_SECRET)
     
     '''
