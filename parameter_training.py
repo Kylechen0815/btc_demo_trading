@@ -262,16 +262,25 @@ if __name__ == "__main__":
     try:
         best = study.best_trial
         p = best.params
-        print("\n" + "="*50)
-        print(f"{Fore.YELLOW}🏆 最佳優化參數結果")
-        print("-" * 50)
-        print(f"止損 SL: {p['sl']}% | 止盈 TP: {p['tp']}%")
-        print(f"移動門檻 Move: {p['move']} | 虧損平倉 Loss: {p['loss']}")
-        print(f"通道寬度 Wide_T: {p['wide_t']} 👈 (新變數)")
-        print(f"效率 ER: {p['er_t']} ({p['er_l']}) | 線性 R2: {p['r2_t']} ({p['r2_l']})")
-        print("-" * 50)
-        print(f"{Fore.CYAN}交易筆數: {best.user_attrs['n_trades']} | 最大回撤: ${best.user_attrs['mdd']:.2f}")
-        print(f"{Fore.GREEN}最終評分: {study.best_value:.4f}")
-        print("="*50)
+        profit_final = best.user_attrs.get("profit", 0)
+        
+        print("\n" + "="*40)
+        print(f"{Fore.YELLOW}🏆 最佳策略參數佈署格式:")
+        print("-" * 40)
+        # 按照你要求的格式輸出
+        print(f"sl_pct        = {p['sl']:.1f}")
+        print(f"tp_pct        = {p['tp']:.1f}")
+        print(f"min_move_pts  = {p['move']:.1f}")
+        print(f"solid_ratio   = {p['solid']:.2f}  // 同步 Python 邏輯")
+        print(f"er_length     = {int(p['er_l'])}")
+        print(f"er_thr        = {p['er_t']:.1f}")
+        print(f"r2_len        = {int(p['r2_l'])}")
+        print(f"r2_thr        = {p['r2_t']:.1f}")
+        print(f"max_loss_pts  = {int(p['loss'])}")
+        print(f"min_gap       = {int(p['wide_t'])}")
+        print("-" * 40)
+        print(f"{Fore.GREEN}💰 最終獲利總額: ${profit_final:.2f}")
+        print(f"{Fore.CYAN}📊 總交易筆數: {best.user_attrs.get('n_trades')}")
+        print("="*40)
     except Exception as e:
-        print(f"優化異常或無結果: {e}")
+        print(f"尚未有最佳結果: {e}")
