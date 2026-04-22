@@ -240,3 +240,7 @@ if __name__ == "__main__":
         
     except Exception as e:
         print(f"尚未有最佳結果: {e}")
+         
+
+
+        111
